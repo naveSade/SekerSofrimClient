@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap-rtl.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+    <!-- start: Navber-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <img src="../img/ciMarketing.png"
+                 onmouseover="this.src = this.src.replace('ciMarketing', 'ciMarketingHover')" 
+                 onmouseout="this.src = this.src.replace('ciMarketingHover', 'ciMarketing')"/>
+            <img src="../img/ministryOfCultureAndSport.png"
+                 onmouseover="this.src = this.src.replace('ministryOfCultureAndSport', 'ministryOfCultureAndSportHover')" 
+                 onmouseout="this.src = this.src.replace('ministryOfCultureAndSportHover', 'ministryOfCultureAndSport')"/>
+            <h1><span style="font-weight: 400">סקר</span><span style="font-weight: 700"> סופרים</span></h1>
+            <!--<ul class="nav navbar-nav">
+                <li class="active"><a href="#">תגית</a></li>
+                <li><a href="#about">תגית</a></li>
+                <li><a href="#contact">תגית</a></li>
+            </ul>-->
+        </div>
+    </nav>
+    <!-- end: Navbar-->
+
+
+    <!-- start: Container -->
+    <div class="container body">
+
+        <!-- Welcom -->
+        <section id="welcom"
+                 index="0">
+            <h1>ברוכים הבאים</h1>
+        </section>
+
+
+        <!-- Id -->
+        <section id="id"
+                 index="1">
+            <h1>הזן מספר תעודת זהות</h1>
+            <input class="id" type="text" maxlength="9"/>
+            <h5 hidden></h5>
+            <button to="confirm" title="לחץ לאישור תעודת הזהות">אישור</button>
+        </section>
+
+
+        <!-- Password -->
+        <section id="password"
+                 index="2">
+            <h1>הזן סיסמא</h1>
+            <h4 hidden></h4>
+            <br />
+            <input type="password" />
+            <h5 hidden></h5>
+            <button to="confirm" title="לחץ לאישור הסיסמא">אישור</button>
+            <button class="success" to="reset" title="לחץ לקבלת סיסמא חדשה">שכחתי סיסמא</button>
+        </section>
+
+
+        <!-- User not exist -->
+        <section id="userNotExist"
+                 index="3">
+            <h1>פרטי ההזדהות שהזנת אינם תואמים לפרטים שבידנו.</h1>
+            <h4>אם אינך מצליח לגשת לאזור האישי אנא מלא את הפרטים ונסדיר את גישתך בהקדם.</h4>
+            <br />
+            <input type="text" maxlength="30" placeholder="שם פרטי" />
+            <input type="text" maxlength="30" placeholder="שם משפחה" />
+            <input type="email" maxlength="30" placeholder="כתובת מייל" />
+            <br />
+            <input type="tel" maxlength="10" placeholder="טלפון נייד" />
+            <input type="tel" maxlength="10" placeholder="טלפון בבית" />
+            <br />
+            <h5 hidden></h5>
+            <button to="confirm" title="לחץ לשליחת הפרטים">שלח פרטים</button>
+            <button to="tryAgain" class="success" title="נסה שוב">נסה שוב</button>
+        </section>
+
+
+        <!-- Thanks for details -->
+        <section id="thanksForDetails"
+                 index="4">
+            <h1>פרטיך נקלטו בהצלחה!</h1>
+            <h4>ניצור עימך קשר בהקדם.</h4>
+        </section>
+        
+        
+        <!-- No details -->
+        <section id="noDetails"
+                 index="5">
+            <h1>אין בידינו את פרטי הקשר שלך לצורך גישה לאתר.</h1>
+            <h4>אנא מלא את הפרטים ונסדיר את גישתך בהקדם.</h4>
+            <br />
+            <input type="text" maxlength="30" placeholder="שם פרטי" />
+            <input type="text" maxlength="30" placeholder="שם משפחה" />
+            <input type="email" maxlength="30" placeholder="כתובת מייל" />
+            <br />
+            <input type="tel" maxlength="10" placeholder="טלפון נייד" />
+            <input type="tel" maxlength="10" placeholder="טלפון בבית" />
+            <br />
+            <h5 hidden></h5>
+            <button to="confirm" title="לחץ לשליחת הפרטים">שלח פרטים</button>
+        </section>
+
+        <!-- User area -->
+        <section id="userArea"
+                 index="6">
+            <h1><span>שלום <b></b>!</span></h1>
+            <h3></h3>
+            <p hidden>
+סכום הזכייה הינו ברוטו וינוכו ממנו מע"מ ומס הכנסה כחוק.
+חברת מידע שיווקי זכתה במכרז לניהול התשלומים לסופרים. לכן הפטור והחשבונית חייבים להיות על שם מידע שיווקי יועצים בע"מ.
+סופרים שהינם עוסקים מורשים, מתבקשים להמציא חשבונית מס בהתאם לסכום שצוין ובתוספת מע"מ בשיעור 17% כחוק. כמו כן, יצרף הסופר אישור על ניהול ספרים + אישור על ניכוי מס במקור (אם הוא מעוניין בכך) וכן עדכון פרטי חשבון הבנק להעברת הכספים.
+סופרים שמסווגים כעוסק פטור מתבקשים להגיש חשבון/קבלה בהתאם לסכום שצוין. כמו כן יצרף הסופר אישור על ניהול ספרים + אישור על ניכוי מס במקור + אישור עוסק פטור וכן עדכון פרטי חשבון הבנק להעברת הכספים.
+סופרים שעיקר הכנסתם היא ממשכורת, מגמלה וכדומה יעבירו הצהרה על כך, כמפורט בהמשך, בצירוף אישור בדבר תיאום מס תקף וכן עדכון פרטי חשבון הבנק להעברת הכספים (במידה ולא יצורף אישור מס, ינוכה המס המרבי לפי הקבוע בחוק.
+אישור מס הכנסה לקביעת שיעור ניכוי המס הינו עבור תמלוגים לסופרים מיועד מידע שיווקי יועצים בע"מ. מס' תיק ניכויים: 939377628.
+            </p>
+            <hr />
+            <table class="table table-condensed" style="margin-bottom: 0">
+                <thead>
+                    <tr>
+                        <th>שם פרטי</th>
+                        <th>שם משפחה</th>
+                        <th>ת.ז</th>
+                        <th>סיסמא</th>
+                        <th>טלפון נייד</th>
+                        <th>טלפון נייח</th>
+                        <th>כתובת מייל</th>
+                        <th>שמור</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input id="firstName"/></td>
+                        <td><input id="lastName"/></td>
+                        <td><input id="id" disabled /></td>
+                        <td><input id="password"/></td>
+                        <td><input id="phone"/></td>
+                        <td><input id="tel"/></td>
+                        <td><input id="email"/></td>
+                        <td id="saveUserAreaData"><span class="glyphicon glyphicon-saved"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4></h4>
+        </section>
+
+
+        <!-- Manage area -->
+        <section id="manageArea"
+                 index="7">
+            <h1><span>ברוכים הבאים <b>לממשק הניהול</b>.</span></h1>
+            <h4 hidden style="color: #3bb156"></h4>
+            <button to="upload" class="success" title="לחץ להעלאת הקובץ"><span class="glyphicon glyphicon-open"></span>&nbsp;&nbsp;&nbsp;העלה Excel משתמשים</button>
+            <button to="download" class="success" title="לחץ להורדת הקובץ"><span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;&nbsp;הורד Excel משתמשים</button>
+            <br />
+            <br />
+            <br />
+            <input id="uploadFile" hidden type="file" style="display: none"/>
+            <table class="table table-condensed" style="margin-bottom: 0">
+                <thead>
+                    <tr>
+                        <th>שם פרטי</th>
+                        <th>שם משפחה</th>
+                        <th>ת.ז</th>
+                        <th>סיסמא</th>
+                        <th>טלפון נייד</th>
+                        <th>טלפון נייח</th>
+                        <th>כתובת מייל</th>
+                        <th>שמור</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="table">
+                <table class="table table-condensed" style="margin-bottom: 0">
+                    <tbody type="tableContent"></tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- Error -->
+        <section id="error"
+                 index="8"> 
+            <h1>שגיאה!</h1>
+            <h4>חלה תקלה במהלך הניווט באתר.</h4>
+            <h4>נסה שוב מאוחר יותר.</h4>
+        </section>
+
+        <div id="messages" hidden></div>
+    </div>
+    <!-- end: Container-->
+
+
+    <!-- Scripts-->
+    <script src="../js/jquery/jquery.js"></script>
+    <script src="../js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+﻿body {
+    font-family: Assistant !important;
+
+    background: rgb(228, 240, 255);
+    background: -moz-radial-gradient(center, ellipse cover, rgb(228, 240, 255) 0%, rgb(159, 211, 255) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgb(228, 240, 255)), color-stop(100%, rgb(159, 211, 255)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgb(228, 240, 255) 0%, rgb(159, 211, 255) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgb(228, 240, 255) 0%, rgb(159, 211, 255) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgb(228, 240, 255) 0%, rgb(159, 211, 255) 100%);
+    background: radial-gradient(ellipse at center, rgb(228, 240, 255) 0%, rgb(159, 211, 255) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80a9d9', endColorstr='#407cad', GradientType=1 );
+}
+
+.navbar {
+    -webkit-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+}
+
+.navbar a,
+section input,
+section button,
+.navbar h1,
+#manageArea #table tr td,
+#manageArea #table .glyphicon {
+    -webkit-transition-duration: 0.3s !important;
+    -moz-transition-duration:  0.3s !important;
+    transition-duration: 0.3s !important;
+}
+
+section {
+    -webkit-transition-duration: 1s !important;
+    -moz-transition-duration:  1s !important;
+    transition-duration: 1s !important;
+}
+
+.container.body {
+    text-align: center;
+}
+
+section {
+    position: absolute;
+    z-index: 222;
+    opacity: 0;
+    display: none;
+}
+
+.hide {
+    opacity: 0;
+}
+
+section input {
+    background: rgba(0,0,0,0);
+    margin-top: 10px;
+    width: 100%;
+    font-size: 22px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(130, 130, 130, 0.60);
+    text-align: center;
+}
+
+section input:hover:not(:focus) {
+    border-bottom-color: #545454;
+    cursor: pointer;
+}
+
+section input:focus {
+    border-bottom-color: #313131 !important;
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+
+section button {
+    padding: 0 15px;
+    margin: 0 8px;
+    width: auto;
+    max-width: 120px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.80);
+    border: none;
+    border-radius: 80px;
+    margin-top: 40px;
+    cursor: not-allowed;
+    color: #b4b4b4;
+}
+
+section button.success {
+    background: #46e0b5;
+    color: white;
+}
+
+section button.success:hover {
+    cursor: pointer;
+    background: #67f1cb;
+}
+
+section button:active,
+section button:focus {
+    outline: none;
+}
+
+section button.success:active {
+    background: #98ead3;
+}
+
+section h1,
+section input {
+    color: #2d0836;
+}
+
+#userNotExist input,
+#noDetails input {
+    width: 20% !important;
+    min-width: 200px;
+    margin: 15px;
+}
+
+#userNotExist input::-webkit-input-placeholder,
+#userNotExist input::-moz-placeholder,
+#userNotExist input:-moz-placeholder,
+#userNotExist input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+h5 {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-top: 5px;
+    color: #ff4d4d;
+}
+
+.navbar img {
+    display: inline;
+    height: 40px;
+    float: left;
+    margin-right: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.navbar h1 {
+    display: inline-table;
+    font-size: 30px;
+    margin-top: 25px;
+    color: white;
+    vertical-align: middle;
+    cursor: default;
+    font-weight: 600;
+}
+
+.navbar h1:hover {
+    font-size: 32px;
+    margin-top: 24px;
+    margin-right: -2px;
+}
+
+#userArea h4 span {
+    color: #4a68ad;
+    padding: 0 10px;
+}
+
+#manageArea button[to="upload"],
+#manageArea button[to="download"] {
+    max-width: 200px !important;
+}
+
+#userArea table {
+    min-width: 900px;
+    max-width: 900px;
+    max-height: 200px;
+    overflow: scroll;
+}
+
+#manageArea #table {
+    min-width: 900px;
+    max-width: 900px;
+    max-height: 200px;
+    overflow: scroll;
+    -webkit-box-shadow: rgba(0,0,0,.2) 0 5px 10px inset;
+    -moz-box-shadow: rgba(0,0,0,.2) 0 5px 10px inset;
+    box-shadow: rgba(0,0,0,.2) 0 5px 10px inset;
+}
+
+#userArea table,
+#manageArea table {
+    width: 100% !important;
+    max-width: 900px;
+    background: rgba(255,255,255,.3);
+}
+
+#userArea table td:hover,
+#manageArea #table tr:hover td {
+    background: rgba(0,0,0,.1);
+}
+
+#userArea table .glyphicon:hover,
+#manageArea #table .glyphicon:hover {
+    cursor: pointer;
+    color: #626262;
+}
+
+#userArea table tr td,
+#manageArea #table tr td {
+    vertical-align: middle;
+    padding: 0;
+    height: 32px;
+}
+
+#userArea table input:focus,
+#manageArea #table input:focus {
+    background: rgba(255,255,255,.5) !important;
+}
+
+#userArea table th:nth-child(1),
+#userArea table td:nth-child(1),
+#manageArea table th:nth-child(1),
+#manageArea table td:nth-child(1) {
+    width: 16%;
+}
+
+#userArea table th:nth-child(2),
+#userArea table td:nth-child(2),
+#manageArea table th:nth-child(2),
+#manageArea table td:nth-child(2) {
+    width: 16%;
+}
+
+#userArea table th:nth-child(3),
+#userArea table td:nth-child(3),
+#manageArea table th:nth-child(3),
+#manageArea table td:nth-child(3) {
+    width: 11%;
+}
+
+#userArea table th:nth-child(4),
+#userArea table td:nth-child(4),
+#manageArea table th:nth-child(4),
+#manageArea table td:nth-child(4) {
+    width: 11%;
+}
+
+#userArea table th:nth-child(5),
+#userArea table td:nth-child(5),
+#manageArea table th:nth-child(5),
+#manageArea table td:nth-child(5) {
+    width: 11%;
+}
+
+#userArea table th:nth-child(6),
+#userArea table td:nth-child(6),
+#manageArea table th:nth-child(6),
+#manageArea table td:nth-child(6) {
+    width: 11%;
+}
+
+#userArea table th:nth-child(7),
+#userArea table td:nth-child(7),
+#manageArea table th:nth-child(7),
+#manageArea table td:nth-child(7) {
+    width: 17%;
+}
+
+#userArea table th:nth-child(8),
+#userArea table td:nth-child(8),
+#manageArea table th:nth-child(8),
+#manageArea table td:nth-child(8) {
+    width: 7%;
+}
+
+#manageArea table th,
+#userArea table th {
+    text-align: center !important;
+    cursor: default !important;
+    background: rgba(255,255,255,.4);
+}
+
+#manageArea table td input,
+#userArea table td input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 14px;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+
+#messages {
+    left: 0;
+    position: absolute;
+    overflow:hidden;
+    white-space:pre;
+    bottom: 0;
+    font-size: 16px;
+    background: rgba(0,0,0,.1);
+    border-top: solid 1px rgba(0,0,0,0.15);
+    -webkit-box-shadow: rgba(0,0,0,.15) 0 5px 10px 0 inset;
+    -moz-box-shadow: rgba(0,0,0,.15) 0 5px 10px 0 inset;
+    box-shadow: rgba(0,0,0,.15) 0 5px 10px 0 inset;
+    padding: 7px;
+    color: rgba(23, 17, 59, 0.87);
+    font-weight: 300;
+}
+
+::-webkit-scrollbar {
+    display:none;
+}
+
+h3, p {
+    max-width: 900px;
+    margin: auto;
+}
+
+p {
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+#manageArea [type="id"] input:hover,
+#manageArea [type="password"] input:hover,
+#userArea input#id:hover {
+    cursor: default !important;
+}
