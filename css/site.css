@@ -1,4 +1,4 @@
-﻿body {
+body {
     font-family: Assistant !important;
 
     background: rgb(228, 240, 255);
@@ -23,7 +23,9 @@ section button,
 .navbar h1,
 #manageArea #table tr td,
 #manageArea #table .glyphicon,
-.navbar h4 {
+.navbar h1,
+.navbar h4,
+.navbar .glyphicon-off {
     -webkit-transition-duration: 0.3s !important;
     -moz-transition-duration:  0.3s !important;
     transition-duration: 0.3s !important;
@@ -44,6 +46,28 @@ section {
     z-index: 222;
     opacity: 0;
     display: none;
+    margin: auto;
+    right: 0;
+    left: 0;
+}
+
+@media (min-width: 768px) {
+    section {
+        width: 30%;
+    }
+
+    #userArea,
+    #manageArea {
+        width: 70%;
+    }
+}
+
+@media (max-width: 767px) {
+    section,
+    #userArea,
+    #manageArea {
+        width: 90%;
+    }
 }
 
 .hide {
@@ -170,14 +194,13 @@ h5 {
 }
 
 #userArea table {
-    min-width: 900px;
     max-width: 900px;
     max-height: 200px;
     overflow: scroll;
 }
 
 #manageArea #table {
-    min-width: 900px;
+    margin: auto;
     max-width: 900px;
     max-height: 200px;
     overflow: scroll;
@@ -335,7 +358,7 @@ p {
 }
 
 .navbar h4 {
-    color: white;
+    color: #6c6c6c;
     font-size: 12px;
     display: inline-table;
     position: absolute;
@@ -345,6 +368,7 @@ p {
 }
 
 .navbar h4:hover {
+    color: #ededed;
     margin-top: 40px;
     margin-right: 9px;
     font-size: 14px;
@@ -356,4 +380,21 @@ td .glyphicon {
 
 td .glyphicon:hover {
     color: #1d8266 !important;
+}
+
+.navbar .glyphicon-off {
+    color: #6c6c6c;
+    margin-top: 11px;
+    margin-left: 10px;
+    vertical-align: -webkit-baseline-middle;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.navbar .glyphicon-off:hover {
+    color: #ededed;
+}
+
+table {
+    margin: auto !important;
 }
