@@ -399,7 +399,7 @@ $(document).ready(function () {
                 if (debug) {
                     throwAlert(s.sections.manageArea.find('h4'), 'הקובץ הועלה בהצלחה!');
                 } else if (evt.target.readyState == FileReader.DONE) {
-                    $.post(config.manage.upload, { file: evt.target.result },
+                    ajaxReq(config.manage.upload, { file: evt.target.result },
                     function (res) {
                         // if OK
                         if (res.message.toLowerCase() == 'success') {
