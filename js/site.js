@@ -19,7 +19,7 @@ $(document).ready(function () {
         userArea: "updateuserdetails",
         manage: {
             upload: "uploaduserscsv",
-            download: "getuserscsv",
+            download: "usersresport.csv",
             tableRow: "confirmuserdetails",
             getTableRows: "getuserdetailsconfirms"
         }
