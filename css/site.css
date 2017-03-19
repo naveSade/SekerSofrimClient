@@ -22,7 +22,8 @@ section input,
 section button,
 .navbar h1,
 #manageArea #table tr td,
-#manageArea #table .glyphicon {
+#manageArea #table .glyphicon,
+.navbar h4 {
     -webkit-transition-duration: 0.3s !important;
     -moz-transition-duration:  0.3s !important;
     transition-duration: 0.3s !important;
@@ -304,6 +305,13 @@ h5 {
     padding: 7px;
     color: rgba(23, 17, 59, 0.87);
     font-weight: 300;
+    cursor: pointer;
+}
+
+#messages:hover {
+    border-top: solid 1px rgba(0,0,0,0.35);
+    background: rgba(0,0,0,.2);
+    color: rgba(23, 17, 59, 1);
 }
 
 ::-webkit-scrollbar {
@@ -324,4 +332,28 @@ p {
 #manageArea [type="password"] input:hover,
 #userArea input#id:hover {
     cursor: default !important;
+}
+
+.navbar h4 {
+    color: white;
+    font-size: 12px;
+    display: inline-table;
+    position: absolute;
+    margin-top: 41px;
+    margin-right: 10px;
+    cursor: default !important;
+}
+
+.navbar h4:hover {
+    margin-top: 40px;
+    margin-right: 9px;
+    font-size: 14px;
+}
+
+td .glyphicon {
+    color: #2cb28d;
+}
+
+td .glyphicon:hover {
+    color: #1d8266 !important;
 }

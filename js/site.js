@@ -1,8 +1,10 @@
-﻿$(document).ready(function () {
+﻿'use strict';
+var saveData;
+$(document).ready(function () {
 
-    var debug = true;
+    var debug = false;
     var debugStartScreen = 0;
-
+    var APIUrl = 'https://7npxc1c5ll.execute-api.us-west-2.amazonaws.com/SekerSofrim/';
     // JavaScript source code
     var config = {
         messages: "getmessages",
@@ -21,7 +23,7 @@
             tableRow: "confirmuserdetails",
             getTableRows: "getuserdetailsconfirms"
         }
-    }
+    };
 
     var s = {
         body: $('body'),
@@ -87,7 +89,7 @@
         }
     ]
 
-    p = {
+    var p = {
         welcom: 0,
         id: 1,
         password: 2,
@@ -97,11 +99,11 @@
         userArea: 6,
         manageArea: 7,
         error: 8
-    }
+    };
 
-    regex = {
+    var regex = {
         email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    }
+    };
 
     var messageDemo = [
         { text: "שימו לב! רשימת הזוכים תפורסם ב15.8.17", id: 1 },
@@ -194,27 +196,34 @@
     ]
 
     function ajaxReq(url, data, callbak, error) {
-        $.ajax({
-            url: url,
-            data: data,
-            dataType: "json",
-            type: "post",
-            success: callbak(data),
-            error: error(err) || function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', APIUrl + url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.withCredentials = true;
+        xhr.addEventListener('load', function (evt) {
+            if (evt.target.status === 200) {
+                callbak(JSON.parse(evt.target.response));
+            } else {
+                console.error(evt.target.response);
                 goToScreen(p.error);
             }
-        })
+        });
+        xhr.addEventListener('error', error || function (error) {
+            console.error(error);
+            goToScreen(p.error);
+        });
+        xhr.send(JSON.stringify(data));
     }
 
-    var curScreen = 1;
+    var curScreen = null;
 
-    resolveObj = {
+    var resolveObj = {
         area: function (res) {
-            if (res.user)  {
+            if (res.user) {
                 if (res.user.isAdmin) {
                     goToScreen(p.manageArea);
                     if (!debug) {
-                        ajaxReq(p.manageArea.getTableRows, null, setTable);
+                        ajaxReq(config.manage.getTableRows, null, setTable);
                     } else {
                         setTable(tableDemo);
                     }
@@ -246,9 +255,11 @@
             } else if (res.wrongPassword) {
                 throwAlert(s.sections.password.find('h5'), 'הסיסמא שגויה. נסה שוב.');
                 s.val[2].password.focus();
+            } else {
+                goToScreen(p.id);
             }
         }
-    }
+    };
 
     function asInt(str) {
         return parseInt(str.replace('px', ''));
@@ -295,7 +306,9 @@
     };
 
     function goToScreen(index, curImportant) {
-        hideElement(getSectionByIndex(curImportant || curScreen));
+        if (curScreen != null || curImportant) {
+            hideElement(getSectionByIndex(curImportant || curScreen));
+        }
         curScreen = index;
         showElement(getSectionByIndex(curScreen));
         if ([6, 7].indexOf(curScreen) == -1) {
@@ -358,7 +371,7 @@
         } else {
             var f = document.createElement("form");
             f.setAttribute('method', "post");
-            f.setAttribute('action', action);
+            f.setAttribute('action', APIUrl + action);
 
             var s = document.createElement("input"); //input element, Submit button
             s.setAttribute('type', "submit");
@@ -411,8 +424,17 @@
             var msg = "";
 
             for (var x = 0; x < 40; x++) {
-                for (var i in res.messages) {
-                    msg += res.messages[i].text + "    |    ";
+                for (var i in res) {
+                    msg += res[i].text + "    |    ";
+                }
+            }
+
+            var modal = $('#messagesModal .modal-body');
+
+            for (var i in res) {
+                modal.append("<div><b>" + (parseInt(i) + 1) + "</b> | " + res[i].text + "</div>");
+                if (i != res.length - 1) {
+                    modal.append('<br/>');
                 }
             }
 
@@ -421,7 +443,8 @@
             s.messages.fadeIn({ duration: 10000 });
 
             setInterval(function () {
-                s.messages.css('right', asInt(s.messages.css('right')) + 1);
+                var right = (asInt(s.messages.css('right')) + 1) || -(s.messages.text().length);
+                s.messages.css('right', right + 1);
             }, 40);
         }
 
@@ -497,7 +520,7 @@
             throwAlert(s.sections.userArea.find('h4'), 'נתוניך העדכניים נשמרו בהצלחה.');
         }
 
-        var row = $(event.currentTarget).parent();
+        var row = s.sections.userArea.find('tr');
 
         var data = {
             ID: row.find('#id').val(),
@@ -522,13 +545,17 @@
         goToScreen(debugStartScreen || p.welcom);
 
         // CONFIRM - 0
-        if (!debug) {
-            ajaxReq(config.authentication, null, resolveObj.area);
-        } else {
-            setTimeout(function () {
-                if (debugStartScreen == 0) goToScreen(p.id);
-            }, 2000);
-        }
+        setTimeout(function () {
+
+            if (!debug) {
+                ajaxReq(config.authentication, null, resolveObj.area);
+            } else {
+                setTimeout(function () {
+                    if (debugStartScreen == 0) goToScreen(p.id);
+                }, 2000);
+            }
+
+        }, 2000);
 
 
         loadMessages();

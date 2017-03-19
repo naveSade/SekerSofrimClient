@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>סקר סופרים</title>
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
     <link rel="stylesheet" href="./css/bootstrap/bootstrap-rtl.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
@@ -22,6 +22,7 @@
                  onmouseover="this.src = this.src.replace('ministryOfCultureAndSport', 'ministryOfCultureAndSportHover')" 
                  onmouseout="this.src = this.src.replace('ministryOfCultureAndSportHover', 'ministryOfCultureAndSport')"/>
             <h1><span style="font-weight: 400">סקר</span><span style="font-weight: 700"> סופרים</span></h1>
+            <h4 style="color:#333;"><b>טלפון: </b>052-5066625 | <b>פקס: </b>02-5385815 | <b>מייל: </b>email@gmail.com</h4>
             <!--<ul class="nav navbar-nav">
                 <li class="active"><a href="#">תגית</a></li>
                 <li><a href="#about">תגית</a></li>
@@ -145,7 +146,7 @@
                         <td><input id="phone"/></td>
                         <td><input id="tel"/></td>
                         <td><input id="email"/></td>
-                        <td id="saveUserAreaData"><span class="glyphicon glyphicon-saved"></span></td>
+                        <td data-toggle="modal" data-target="#confirmModal"><span class="glyphicon glyphicon-saved"></span></td>
                     </tr>
                 </tbody>
             </table>
@@ -194,13 +195,53 @@
             <h4>נסה שוב מאוחר יותר.</h4>
         </section>
 
-        <div id="messages" hidden></div>
+        <div id="messages" hidden data-toggle="modal" data-target="#messagesModal"></div>
     </div>
     <!-- end: Container-->
 
 
+    <!-- start: Messages modal -->
+    <div class="modal fade" id="messagesModal" tabindex="-1" role="dialog" aria-labelledby="messagesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="border-radius: 0">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="messagesModalLabel" style="font-weight: 700">הודעות</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" style="border-radius: 0" data-dismiss="modal">סגור</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end: Messages modal -->
+
+    <!-- start: Confirm modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="border-radius: 0">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="confirmModalLabel" style="font-weight: 700">רק רגע...</h4>
+                </div>
+                <div class="modal-body">
+                    האם אתה בטוח שברצונך לשמור את השינויים?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="border-radius: 0" data-dismiss="modal">ביטול</button>
+                    <button type="button" class="btn btn-primary" style="border-radius: 0" id="saveUserAreaData" data-dismiss="modal">שמור</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end: Confirm modal -->
+
+
     <!-- Scripts-->
     <script src="./js/jquery/jquery.js"></script>
+    <script src="./js/bootstrap/bootstrap.js"></script>
     <script src="./js/site.js"></script>
 </body>
 </html>
