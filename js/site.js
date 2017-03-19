@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 var saveData;
 $(document).ready(function () {
 
@@ -22,7 +22,8 @@ $(document).ready(function () {
             download: "getuserscsv",
             tableRow: "confirmuserdetails",
             getTableRows: "getuserdetailsconfirms"
-        }
+        },
+        logout: "logout"
     };
 
     var s = {
@@ -41,7 +42,8 @@ $(document).ready(function () {
             error: $('#error')
         },
         uploadFile: $('#uploadFile'),
-        messages: $('#messages')
+        messages: $('#messages'),
+        logout: $('#logout')
     };
 
     s.val = [
@@ -195,12 +197,22 @@ $(document).ready(function () {
         }
     ]
 
+    function addLoaderCursor (selector) {
+        $(selector).css('cursor', 'progress !important');
+    }
+
+    function removeCursor(selector) {
+        $(selector).css('cursor', '');
+    }
+
     function ajaxReq(url, data, callbak, error) {
+        addLoaderCursor('*');
         var xhr = new XMLHttpRequest();
         xhr.open('POST', APIUrl + url);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.withCredentials = true;
         xhr.addEventListener('load', function (evt) {
+            removeCursor('*');
             if (evt.target.status === 200) {
                 callbak(JSON.parse(evt.target.response));
             } else {
@@ -209,10 +221,22 @@ $(document).ready(function () {
             }
         });
         xhr.addEventListener('error', error || function (error) {
+            removeCursor('*');
             console.error(error);
             goToScreen(p.error);
         });
         xhr.send(JSON.stringify(data));
+
+        //$.ajax({
+        //    url: APIUrl + url,
+        //    data: data,
+        //    dataType: "json",
+        //    type: "post",
+        //    success: callbak,
+        //    error: error || function () {
+        //        goToScreen(p.error);
+        //    }
+        //})
     }
 
     var curScreen = null;
@@ -220,15 +244,17 @@ $(document).ready(function () {
     var resolveObj = {
         area: function (res) {
             if (res.user) {
+                s.logout.show('slow');
+
                 if (res.user.isAdmin) {
                     goToScreen(p.manageArea);
                     if (!debug) {
-                        ajaxReq(config.manage.getTableRows, null, setTable);
+                        ajaxReq(p.manageArea.getTableRows, null, setTable);
                     } else {
                         setTable(tableDemo);
                     }
                 } else {
-                    s.sections.userArea.find('h1 span b').text(res.user.firstName);
+                    s.sections.userArea.find('h1 span b').text(res.user.firstName ? " " + res.user.firstName : "");
                     var text;
 
                     if (res.user.award == null || res.user.award == undefined) {
@@ -371,7 +397,7 @@ $(document).ready(function () {
         } else {
             var f = document.createElement("form");
             f.setAttribute('method', "post");
-            f.setAttribute('action', APIUrl + action);
+            f.setAttribute('action', action);
 
             var s = document.createElement("input"); //input element, Submit button
             s.setAttribute('type', "submit");
@@ -399,7 +425,7 @@ $(document).ready(function () {
                 if (debug) {
                     throwAlert(s.sections.manageArea.find('h4'), 'הקובץ הועלה בהצלחה!');
                 } else if (evt.target.readyState == FileReader.DONE) {
-                    ajaxReq(config.manage.upload, { file: evt.target.result },
+                    $.post(config.manage.upload, { file: evt.target.result },
                     function (res) {
                         // if OK
                         if (res.message.toLowerCase() == 'success') {
@@ -451,7 +477,7 @@ $(document).ready(function () {
         if (!debug) {
             ajaxReq(config.messages, null, resolve);
         } else {
-            resolve({ messages: messageDemo })
+            resolve(messageDemo)
         }
     }
 
@@ -485,7 +511,7 @@ $(document).ready(function () {
         $("td input").on("focus", function (event) {
             $(event.currentTarget).select();
         });
-    }
+    };
 
     saveData = function(event) {
         function resolve(res) {
@@ -540,6 +566,8 @@ $(document).ready(function () {
     });
 
     (function () {
+        initResponsiveElements();
+
         setTimeout(initResponsiveElements, 0);
 
         goToScreen(debugStartScreen || p.welcom);
@@ -559,6 +587,15 @@ $(document).ready(function () {
 
 
         loadMessages();
+
+        // Logout
+        s.logout.on("click", function (event) {
+            var resolve = function () {
+                goToScreen(p.id);
+            }
+
+            ajaxReq(config.logout, null, resolve);
+        });
 
         // Input auto focus
         $("input").on("focus", function (event) {
